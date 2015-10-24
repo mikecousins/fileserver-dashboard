@@ -1,0 +1,37 @@
+﻿@model DashboardViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>CPU Usage</h2>
+        <ul>
+            <li>CPU Percentage: @Model.CpuUsage</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h2>Memory Usage</h2>
+        <ul>
+            <li>Memory Percentage: @Model.MemoryUsage</li>
+
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h2>Disk Space</h2>
+        <ul>
+            <li>Total Array: @Model.TotalArray</li>
+            <li>Free Array: @Model.FreeArray</li>
+            <li>Used Array: @Model.UsedArray</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h2>Deploy</h2>
+        <ul>
+            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app locally</a></li>
+            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517852">Run your app on .NET Core</a></li>
+            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run commands in your app</a></li>
+            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
+        </ul>
+    </div>
+</div>
