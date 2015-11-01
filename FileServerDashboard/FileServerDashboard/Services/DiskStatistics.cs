@@ -1,17 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
+﻿using System.IO;
 
 namespace FileServerDashboard.Services
 {
     public class DiskStatistics
     {
-        public double GetTotalSpace()
+        private DriveInfo _drive = new DriveInfo("D");
+
+        public double TotalSpace
         {
-            var drive = new DriveInfo("D");
-            return drive.TotalSize;
+            get
+            {
+                return (double)_drive.TotalSize / 1024 / 1024 / 1024 / 1024;
+            }
+        }
+
+        public double FreeSpace
+        {
+            get
+            {
+                return (double)_drive.AvailableFreeSpace / 1024 / 1024 / 1024 / 1024;
+            }
+        }
+
+        public double UsedSpace
+        {
+            get
+            {
+                return TotalSpace - FreeSpace;
+            }
         }
     }
 }

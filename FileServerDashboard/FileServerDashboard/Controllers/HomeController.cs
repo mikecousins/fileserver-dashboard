@@ -10,12 +10,13 @@ namespace FileServerDashboard.Controllers
         public async Task<ActionResult> Index()
         {
             var viewModel = new ViewModel();
-            var stats = new PerformanceStatistics();
-            viewModel.CpuUsage = await stats.getCurrentCpuUsage();
-            viewModel.MemoryUsage = await stats.getAvailableRAM();
-            viewModel.FreeArray = 1;
-            viewModel.TotalArray = 2;
-            viewModel.UsedArray = 3;
+            var performance = new PerformanceStatistics();
+            viewModel.CpuUsage = await performance.getCurrentCpuUsage();
+            viewModel.MemoryUsage = await performance.getAvailableRAM();
+            var disk = new DiskStatistics();
+            viewModel.FreeArray = disk.FreeSpace;
+            viewModel.TotalArray = disk.TotalSpace;
+            viewModel.UsedArray = disk.UsedSpace;
             return View(viewModel);
         }
     }

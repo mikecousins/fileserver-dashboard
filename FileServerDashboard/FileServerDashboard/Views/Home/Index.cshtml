@@ -12,14 +12,14 @@
 <div class="row">
     <div class="col-md-4">
         <h2>CPU Usage</h2>
-        <p>@Model.CpuUsage</p>
+        <p>@Model.CpuUsage.ToString("#.##")<text>%</text></p>
     </div>
     <div class="col-md-4">
         <h2>RAM Usage</h2>
-        <p>@Model.MemoryUsage</p>
+        <p>@Model.MemoryUsage.ToString("#.##")<text>MB</text></p>
     </div>
     <div class="col-md-4">
         <h2>Disk Usage</h2>
-        <p>@Model.UsedArray / @Model.TotalArray</p>
+        <p>@Model.UsedArray.ToString("#.##")<text>TB</text> / @Model.TotalArray.ToString("#.##")<text>TB</text></p>
     </div>
 </div>
