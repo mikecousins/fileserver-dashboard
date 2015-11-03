@@ -3,17 +3,48 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>CPU Usage</h2>
-        <p>@Model.CpuUsage.ToString("#.##")<text>%</text></p>
-    </div>
-    <div class="col-md-4">
-        <h2>RAM Usage</h2>
-        <p>@Model.MemoryUsage.ToString("#.##")<text>MB</text></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Disk Usage</h2>
-        <p>@Model.UsedArray.ToString("#.##")<text>TB</text> / @Model.TotalArray.ToString("#.##")<text>TB</text></p>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">Instant</span>
+                    <h5>Processor</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@Model.CpuUsage.ToString("#.##")<text>%</text></h1>
+                    <div class="stat-percent font-bold text-success">@Model.CpuUsage.ToString("#.##")<text>%</text> <i class="fa fa-bolt"></i></div>
+                    <small>CPU Usage</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">Instant</span>
+                    <h5>Memory</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@Model.MemoryUsage.ToString("#.##")<text>MB</text></h1>
+                    <div class="stat-percent font-bold text-success">@Model.CpuUsage.ToString("#.##")<text>%</text> <i class="fa fa-bolt"></i></div>
+                    <small>Memory Usage</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">Instant</span>
+                    <h5>Disk</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@Model.UsedArray.ToString("#.##")<text>TB</text> / @Model.TotalArray.ToString("#.##")<text>TB</text></h1>
+                    <div class="stat-percent font-bold text-success">@Model.CpuUsage.ToString("#.##")<text>%</text> <i class="fa fa-bolt"></i></div>
+                    <small>Disk Usage</small>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
