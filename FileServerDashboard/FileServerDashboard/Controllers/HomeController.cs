@@ -1,6 +1,7 @@
 ﻿using FileServerDashboard.Models;
 using FileServerDashboard.Services;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace FileServerDashboard.Controllers
@@ -18,6 +19,18 @@ namespace FileServerDashboard.Controllers
             viewModel.TotalArray = disk.TotalSpace;
             viewModel.UsedArray = disk.UsedSpace;
             return View(viewModel);
+        }
+
+        public async Task<JsonResult> CurrentCpuPercentage()
+        {
+            var performance = new PerformanceStatistics();
+            return Json(await performance.getCurrentCpuUsage());
+        }
+
+        public async Task<JsonResult> CurrentRamAvailable()
+        {
+            var performance = new PerformanceStatistics();
+            return Json(await performance.getAvailableRAM());
         }
     }
 }
