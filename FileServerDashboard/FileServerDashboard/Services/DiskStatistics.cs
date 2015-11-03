@@ -4,7 +4,7 @@ namespace FileServerDashboard.Services
 {
     public class DiskStatistics
     {
-        private DriveInfo _drive = new DriveInfo("V");
+        private DriveInfo _drive = new DriveInfo("D");
 
         public double TotalSpace
         {
