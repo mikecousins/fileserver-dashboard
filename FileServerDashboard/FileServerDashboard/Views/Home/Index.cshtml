@@ -8,7 +8,6 @@
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <span class="label label-success pull-right">Instant</span>
                     <h5>Processor</h5>
                 </div>
                 <div class="ibox-content">
@@ -22,7 +21,6 @@
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <span class="label label-success pull-right">Instant</span>
                     <h5>Memory</h5>
                 </div>
                 <div class="ibox-content">
@@ -36,15 +34,54 @@
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <span class="label label-success pull-right">Instant</span>
                     <h5>Disk</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">@Model.UsedArray.ToString("#.##")<text>TB</text> / @Model.TotalArray.ToString("#.##")<text>TB</text></h1>
-                    <div class="stat-percent font-bold text-success">@Model.CpuUsage.ToString("#.##")<text>%</text> <i class="fa fa-bolt"></i></div>
+                    <div class="flot-chart">
+                        <div class="flot-chart-pie-content" id="storage-pie-chart"></div>
+                    </div>
+                    <div class="stat-percent font-bold text-success">@Model.UsedArray.ToString("#.##")<text>TB</text> / @Model.TotalArray.ToString("#.##")<text>TB</text> <i class="fa fa-bolt"></i></div>
                     <small>Disk Usage</small>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section scripts
+{
+<script>
+    $(document).ready(function () {
+
+        var data = [{
+            label: "Free Space",
+            data: @Model.FreeArray,
+            color: "#79d2c0",
+        }, {
+            label: "Used Space",
+            data: @Model.UsedArray,
+            color: "#bababa",
+        }];
+
+        var plotObj = $.plot($("#storage-pie-chart"), data, {
+            series: {
+                pie: {
+                    show: true
+                }
+            },
+            grid: {
+                hoverable: true
+            },
+            tooltip: true,
+            tooltipOpts: {
+                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                shifts: {
+                    x: 20,
+                    y: 0
+                },
+                defaultTheme: false
+            }
+        });
+    })
+</script>
+}

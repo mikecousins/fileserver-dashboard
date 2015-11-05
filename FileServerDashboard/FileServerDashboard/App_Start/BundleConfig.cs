@@ -23,6 +23,11 @@ namespace FileServerDashboard
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/flot").Include(
+                        "~/Scripts/flot/jquery.flot.js",
+                        "~/Scripts/flot/jquery.flot.tooltip.js",
+                        "~/Scripts/flot/jquery.flot.pie.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
