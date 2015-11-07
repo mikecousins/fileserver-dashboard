@@ -6,10 +6,10 @@ namespace FileServerDashboard.Services
 {
     public class DiskStatistics
     {
-        private DriveInfo _drive = new DriveInfo("V");
-        private DirectoryInfo _movieFolder = new DirectoryInfo(@"V:\Movies");
-        private DirectoryInfo _tvFolder = new DirectoryInfo(@"V:\TV Shows");
-        private DirectoryInfo _photoFolder = new DirectoryInfo(@"P:\");
+        private DriveInfo _drive = new DriveInfo("D");
+        private DirectoryInfo _movieFolder = new DirectoryInfo(@"D:\Videos\Movies");
+        private DirectoryInfo _tvFolder = new DirectoryInfo(@"D:\Videos\TV Shows");
+        private DirectoryInfo _photoFolder = new DirectoryInfo(@"D:\Photos");
 
         public double TotalSpace
         {
