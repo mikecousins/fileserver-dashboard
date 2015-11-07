@@ -18,6 +18,9 @@ namespace FileServerDashboard.Controllers
             viewModel.FreeArray = disk.FreeSpace;
             viewModel.TotalArray = disk.TotalSpace;
             viewModel.UsedArray = disk.UsedSpace;
+            viewModel.MovieNames = disk.MovieTitles;
+            viewModel.TVShowNames = disk.TvShowTitles;
+            //viewModel.NumberOfPhotos = disk.NumberOfPhotos;
             return View(viewModel);
         }
 

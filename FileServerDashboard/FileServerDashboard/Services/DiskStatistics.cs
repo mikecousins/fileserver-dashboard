@@ -1,10 +1,15 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace FileServerDashboard.Services
 {
     public class DiskStatistics
     {
-        private DriveInfo _drive = new DriveInfo("D");
+        private DriveInfo _drive = new DriveInfo("V");
+        private DirectoryInfo _movieFolder = new DirectoryInfo(@"V:\Movies");
+        private DirectoryInfo _tvFolder = new DirectoryInfo(@"V:\TV Shows");
+        private DirectoryInfo _photoFolder = new DirectoryInfo(@"P:\");
 
         public double TotalSpace
         {
@@ -27,6 +32,44 @@ namespace FileServerDashboard.Services
             get
             {
                 return TotalSpace - FreeSpace;
+            }
+        }
+
+        public List<string> MovieTitles
+        {
+            get
+            {
+                var movieTitles = new List<string>();
+                var movies = _movieFolder.GetDirectories();
+                foreach (var movie in movies)
+                {
+                    movieTitles.Add(movie.Name);
+                }
+                movieTitles.Sort();
+                return movieTitles;
+            }
+        }
+
+        public List<string> TvShowTitles
+        {
+            get
+            {
+                var tvShowTitles = new List<string>();
+                var tvShows = _tvFolder.GetDirectories();
+                foreach (var tvShow in tvShows)
+                {
+                    tvShowTitles.Add(tvShow.Name);
+                }
+                tvShowTitles.Sort();
+                return tvShowTitles;
+            }
+        }
+
+        public int NumberOfPhotos
+        {
+            get
+            {
+                return _photoFolder.GetFiles("*", SearchOption.AllDirectories).Length;
             }
         }
     }

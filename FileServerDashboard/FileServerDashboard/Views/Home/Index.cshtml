@@ -46,6 +46,47 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Movies</h5>
+                </div>
+                <div class="ibox-content">
+                    @foreach (var movie in Model.MovieNames)
+                    {
+                        <span>@movie</span><br />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>TV Shows</h5>
+                </div>
+                <div class="ibox-content">
+                    @foreach (var tvShow in Model.TVShowNames)
+                    {
+                        <span>@tvShow</span><br />
+                    }                
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Photos</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@Model.NumberOfPhotos</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section scripts

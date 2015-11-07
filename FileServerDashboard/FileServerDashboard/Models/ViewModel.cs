@@ -16,5 +16,11 @@ namespace FileServerDashboard.Models
         public double FreeArray { get; set; }
 
         public double UsedArray { get; set; }
+
+        public List<string> MovieNames { get; set; }
+
+        public List<string> TVShowNames { get; set; }
+
+        public int NumberOfPhotos { get; set; }
     }
 }
