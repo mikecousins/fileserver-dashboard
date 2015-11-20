@@ -12,8 +12,9 @@ namespace FileServerDashboard.Controllers
         {
             var viewModel = new ViewModel();
             var performance = new PerformanceStatistics();
-            viewModel.CpuUsage = await performance.getCurrentCpuUsage();
-            viewModel.MemoryUsage = await performance.getAvailableRAM();
+            viewModel.CpuUsage = await performance.GetCurrentCpuUsage();
+            viewModel.MemoryAvailable = await performance.GetAvailableRAM();
+            viewModel.TotalMemory = performance.GetTotalRAM();
             var disk = new DiskStatistics();
             viewModel.FreeArray = disk.FreeSpace;
             viewModel.TotalArray = disk.TotalSpace;
@@ -27,13 +28,13 @@ namespace FileServerDashboard.Controllers
         public async Task<JsonResult> CurrentCpuPercentage()
         {
             var performance = new PerformanceStatistics();
-            return Json(await performance.getCurrentCpuUsage());
+            return Json(await performance.GetCurrentCpuUsage());
         }
 
         public async Task<JsonResult> CurrentRamAvailable()
         {
             var performance = new PerformanceStatistics();
-            return Json(await performance.getAvailableRAM());
+            return Json(await performance.GetAvailableRAM());
         }
     }
 }

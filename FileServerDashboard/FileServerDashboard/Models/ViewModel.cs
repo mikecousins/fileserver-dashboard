@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace FileServerDashboard.Models
 {
@@ -9,7 +6,17 @@ namespace FileServerDashboard.Models
     {
         public float CpuUsage { get; set; }
 
-        public float MemoryUsage { get; set; }
+        public float MemoryAvailable { get; set; }
+
+        public int TotalMemory { get; set; }
+
+        public string MemoryUsage
+        {
+            get
+            {
+                return (TotalMemory - MemoryAvailable).ToString("#.##") + "/" + TotalMemory + "GB";
+            }
+        }
 
         public double TotalArray { get; set; }
 
