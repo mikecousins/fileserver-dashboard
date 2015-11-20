@@ -53,7 +53,7 @@
                 <div class="ibox-title">
                     <h5>Movies</h5>
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content" style="height: 300px; overflow-x: hidden; overflow-y: scroll">
                     @foreach (var movie in Model.MovieNames)
                     {
                         <span>@movie</span><br />
@@ -67,7 +67,7 @@
                 <div class="ibox-title">
                     <h5>TV Shows</h5>
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content" style="height: 300px; overflow-x: hidden; overflow-y: scroll">
                     @foreach (var tvShow in Model.TVShowNames)
                     {
                         <span>@tvShow</span><br />
