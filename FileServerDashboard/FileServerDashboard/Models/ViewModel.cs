@@ -10,11 +10,19 @@ namespace FileServerDashboard.Models
 
         public int TotalMemory { get; set; }
 
-        public string MemoryUsage
+        public string MemoryUsageString
         {
             get
             {
                 return (TotalMemory - MemoryAvailable).ToString("#.##") + "/" + TotalMemory + "GB";
+            }
+        }
+
+        public float MemoryUsage
+        {
+            get
+            {
+                return (TotalMemory - MemoryAvailable) / TotalMemory * 100;
             }
         }
 

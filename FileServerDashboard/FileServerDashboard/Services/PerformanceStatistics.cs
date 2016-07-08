@@ -37,17 +37,19 @@ namespace FileServerDashboard.Services
 
         public int GetTotalRAM()
         {
-            string Query = "SELECT MaxCapacity FROM Win32_PhysicalMemoryArray";
+            string Query = "SELECT * FROM Win32_PhysicalMemory";
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(Query);
+            ulong totalSize = 0;
             foreach (ManagementObject WniPART in searcher.Get())
             {
-                uint SizeinKB = Convert.ToUInt32(WniPART.Properties["MaxCapacity"].Value);
-                UInt32 SizeinMB = SizeinKB / 1024;
-                UInt32 SizeinGB = SizeinMB / 1024;
-                Console.WriteLine("Size in KB: {0}, Size in MB: {1}, Size in GB: {2}", SizeinKB, SizeinMB, SizeinGB);
-                return Convert.ToInt32(SizeinGB);
+                totalSize += Convert.ToUInt64(WniPART.Properties["Capacity"].Value);
+
             }
-            return 0;
+            ulong SizeinKB = totalSize / 1024;
+            ulong SizeinMB = SizeinKB / 1024;
+            uint SizeinGB = Convert.ToUInt32(SizeinMB / 1024);
+            Console.WriteLine("Size in KB: {0}, Size in MB: {1}, Size in GB: {2}", SizeinKB, SizeinMB, SizeinGB);
+            return Convert.ToInt32(SizeinGB);
         }
     }
 }
